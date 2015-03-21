@@ -149,12 +149,13 @@ if (LED3,4,5 == 1 && LED1,2 == 0)
 	Move sumo-bot right 90 degrees
 
 ##########5. Gaps (should be able to include this in the code in 1-4)########
-if (LED1,2,3,4,5 == 0)
+Insert code here or fixes above
+
+######################7. Dead end track and finish line######################
+while (LED1,2,3,4,5 == 0)
 	StartTimer();
 	if (Timer == *8 cm value*)
 		Rotate sumo-bot 180 degrees
-
-######################7. Dead end track and finish line######################
 while (LED1,2,3,4,5 == 1)
 	StartTimer();
 	if (Timer == *3 cm(example) value*)
