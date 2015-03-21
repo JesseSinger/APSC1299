@@ -1,32 +1,165 @@
 Scenarios
+1. Tight Curves
+2. Tight Angles (30 degrees < Angle < 90 degrees)
+3. Perpendicular (Angle == 90 degrees)
+4. Large Angles (90 degrees < Angle)
+5. Gaps (should be able to include this in the code in 1-4)
+6. Nearby trails
 
 Note: (30 degrees < Angles) when the robot is required to turn
 due to the lack of rotational control with the sumo-bots at
 extremely tight angles.
 
+#######################################FILE: MAIN.C#######################################
+
 // int Threshold = x; // Threshold of the inked line
 int Threshold = 410; // Threshold of the tape
 
-// To help identify the delay between two points in order for the sum-bot
+int Timer = 0; // Global variable so that StartTimer(); and DifferentialValue(); c
+// manipulate this variable
+
+// To start the timer if the outer or middle LEDs fall into the threshold
+StartTimer();
+
+// To help identify the delay between two points in order for the sumo-bot
 // to act accordingly
-// This should change to a prototype, depending on the value
-// will help measure how far of an angle the sumo-bot will rotate
-int DifferentialValue = 0; 
+DifferentialValue();
 
-1. Tight curves
+// To determine what angle the sumo-bot encounters
+int TightAngle = 0;
+int LargeAngle = 0;
 
-2. Tight Angles (30 degrees < Angle < 90 degrees)
+// To determine which direction the sumo-bot should move
+int Left = 0;
+int Right = 0;
 
-3. Perpendicular (Angle == 90 degrees)
+while (1)
 
-4. Large Angles (90 degrees < Angle)
+################################0. Straight Line###############################
 
-5. Gaps (should be able to include this in the code in 1-4)
+while (LED3 == 1 && LED1,2,4,5 == 0) // When only LED3 is on
 
-6. Nearby trails
+	Move forward
 
-7. Dead end track and finish line
+################################1. Tight curves################################
 
+Insert code here or below
+	
+####################################LEFT TURN###################################
+
+if (LED3,1 == 1 && LED2,4,5 == 0) // When only LED1 and LED3 are on
+
+	###########2. Tight Angles (30 degrees < Angle < 90 degrees)##########
+	if (TightAngles == 0 && LargeAngles == 0) // This means that the sumo-bot will now identify the track change 
+						// as a tight angle turn
+		Left = 1;
+		TightAngles = 1;
+		StartTimer(); // Starts a timer
+
+	#########################6. Nearby trails#############################		
+	else if (TightAngle1 == 1 && LargeAngles == 0) // This means that the sumo-bot will identify that there is
+							// a nearby track
+		**Code used for nearby tracks*
+
+	####0########4. Large Angles (90 degrees < Angle)#####################	
+
+	else if (TightAngles == 0 && LargeAngles == 1)
+	
+		Left = 0;
+		LargeAngles = 0;
+		DifferentialValue();
+		MoveSumoBotAccordingly
+
+if (LED3,2 == 1 && LED1,4,5 == 0) // When only LED2 and LED3 are on
+
+	###########2. Tight Angles (30 degrees < Angle < 90 degrees)##########
+	if (TightAngles == 1 && LargeAngles == 0) // This means that the sumo-bot will now identify the track change 
+						// as a tight angle turn
+		Left = 0;
+		TightAngles = 0;
+		DifferentialValue();
+		MoveSumoBotAccordingly
+
+	#########################6. Nearby trails#############################		
+	else if (TightAngles == 0 && LargeAngles == 1) // This means that the sumo-bot will identify that there is
+							// a nearby track
+		**Code used for nearby tracks**
+
+	#############4. Large Angles (90 degrees < Angle)#####################	
+
+	else if (TightAngles == 1 && LargeAngles == 0)
+	
+		Left = 1;
+		LargeAngles = 1;
+		StartTimer(); // Starts a timer
+		
+####################################RIGHT TURN###################################
+
+if (LED3,5 == 1 && LED2,4,1 == 0) // When only LED1 and LED3 are on
+
+	###########2. Tight Angles (30 degrees < Angle < 90 degrees)##########
+	if (TightAngles == 0 && LargeAngles == 0) // This means that the sumo-bot will now identify the track change 
+						// as a tight angle turn
+		Right = 1;
+		TightAngles = 1;
+		StartTimer(); // Starts a timer
+
+	#########################6. Nearby trails#############################		
+	else if (TightAngles == 1 && LargeAngles == 0) // This means that the sumo-bot will identify that there is
+							// a nearby track
+		**Code used for nearby tracks**
+
+	#############4. Large Angles (90 degrees < Angle)#####################	
+
+	else if (TightAngles == 0 && LargeAngles == 1)
+	
+		Right = 0;
+		LargeAngles = 0;
+		DifferentialValue();
+		MoveSumoBotAccordingly
+
+if (LED3,4 == 1 && LED1,2,5 == 0) // When only LED4 and LED3 are on
+
+	###########2. Tight Angles (30 degrees < Angle < 90 degrees)##########
+	if (TightAngles == 1 && LargeAngles == 0) // This means that the sumo-bot will now identify the track change 
+						// as a tight angle turn
+		Right = 0;
+		TightAngles = 0;
+		DifferentialValue();
+		MoveSumoBotAccordingly
+
+	#########################6. Nearby trails#############################		
+	else if (TightAngles == 0 && LargeAngles == 1) // This means that the sumo-bot will identify that there is
+							// a nearby track
+		**Code used for nearby tracks**
+
+	#############4. Large Angles (90 degrees < Angle)#####################	
+
+	else if (TightAngles == 1 && LargeAngles == 0)
+	
+		Right = 1;
+		LargeAngles = 1;
+		StartTimer(); // Starts a timer
+		
+####################3. Perpendicular (Angle == 90 degrees)###################
+
+if (LED1,2,3 == 1 && LED4,5 == 0)
+	Move sumo-bot left 90 degrees
+if (LED3,4,5 == 1 && LED1,2 == 0)
+	Move sumo-bot right 90 degrees
+
+##########5. Gaps (should be able to include this in the code in 1-4)########
+if (LED1,2,3,4,5 == 0)
+	StartTimer();
+	if (Timer == *8 cm value*)
+		Rotate sumo-bot 180 degrees
+
+######################7. Dead end track and finish line######################
+while (LED1,2,3,4,5 == 1)
+	StartTimer();
+	if (Timer == *3 cm(example) value*)
+		Stop sumo-bot and dance
+Timer = 0;
 
 
 
