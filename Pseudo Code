@@ -4,6 +4,15 @@ Note: (30 degrees < Angles) when the robot is required to turn
 due to the lack of rotational control with the sumo-bots at
 extremely tight angles.
 
+// int Threshold = x; // Threshold of the inked line
+int Threshold = 410; // Threshold of the tape
+
+// To help identify the delay between two points in order for the sum-bot
+// to act accordingly
+// This should change to a prototype, depending on the value
+// will help measure how far of an angle the sumo-bot will rotate
+int DifferentialValue = 0; 
+
 1. Tight curves
 
 2. Tight Angles (30 degrees < Angle < 90 degrees)
