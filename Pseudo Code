@@ -1,3 +1,26 @@
+Scenarios
+
+Note: (30 degrees < Angles) when the robot is required to turn
+due to the lack of rotational control with the sumo-bots at
+extremely tight angles.
+
+1. Tight curves
+
+2. Tight Angles (30 degrees < Angle < 90 degrees)
+
+3. Perpendicular (Angle == 90 degrees)
+
+4. Large Angles (90 degrees < Angle)
+
+5. Gaps (should be able to include this in the code in 1-4)
+
+6. Nearby trails
+
+7. Dead end track and finish line
+
+
+
+
 Preliminary Ideas
 
 If LED 3 = 1 then LED 2 = 1, rotate robot left, if LED 3 =1 then LED 5 = 1 rotate robot right
