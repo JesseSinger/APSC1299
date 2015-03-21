@@ -1,0 +1,14 @@
+Preliminary Ideas
+
+If LED 3 = 1 then LED 2 = 1, rotate robot left, if LED 3 =1 then LED 5 = 1 rotate robot right
+
+If LED 1, 2, 3 = 1 then rotate robot 90, if LED 3, 4, 5 =1 then rotate robot 90
+
+If LED 1, 3 = 1 then rotate robot 120, if LED 3, 5 = 1 
+and then all LED = 0 then rotate robot 120
+else robot continues moving forward
+
+If LED 1, 2, 3, 4, 5, =1 then continue moving forward
+	if LED 1, 2, 3,4 ,5 = 1 for 8 seconds then stop and dance
+
+If all LED = 0 then continue moving for 8 cm, if LED = 0 still, rotate robot 180 degrees
